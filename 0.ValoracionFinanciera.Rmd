@@ -1,0 +1,224 @@
+---
+title: "Seguros de Vida"
+author: "André de la Sota" 
+date: "`r format(Sys.Date(), '%d de %B, %Y')`"
+output:
+  html_document:
+    css: estilos.css
+    toc: true
+    number_sections: true
+    toc_depth: 5
+    toc_float:
+      collapsed: true
+      smooth_scroll: true
+  pdf_document:
+    toc: true
+    number_sections: true
+    toc_depth: '5'
+    highlight: tango
+  word_document:
+    toc: true
+    number_sections: true
+    toc_depth: '5'
+    highlight: tango
+---
+
+
+
+
+
+
+# Valoración financiera 
+
+Traer a un valor futuro a un valor presente se hace mediante
+
+$$
+\boxed{C_{0}=f(t,0)\cdot C_{t}}
+$$
+
+donde 
+
+- $t$: Horizonte temporal 
+
+- $C_{t}$: Es la cantidad en el periodo $t$
+
+- $f(t,0)$: Es el factor de descuento de $t$ a $0$
+
+- $C_0$: Es la cantidad equivalente del monto $C_t$ en el periodo $0$
+
+En el caso donde $C_t=1$ se tiene que su monto equivalente en cero es $f(t,0)$, por lo tanto se puede interpretar $f(t,0)$ como el equivalente monentario de una unidad monetaria (un euro) del tiempo $t$ en el presente.
+
+
+En el régimen de interés compuesto el factor de descuento se expresa como
+
+
+$$\boxed{f(t,0)=\left(1+I_{h}\right)^{-h\cdot t}}$$
+
+
+debido a que $I_h=\frac{i_h}{h}$, también
+
+$$\boxed{f(t,0)=\left(1+\frac{i_{h}}{h}\right)^{-h\cdot t}}$$
+
+
+donde:
+
+- $h$: Frecuencia de capitalización
+
+- $I_h$: El tanto efectivo de interés de frecuencia de capitalización $h$
+
+- $i_h$: El tanto de interés nominal (anual) de frecuencia de capitalación $h$ 
+
+
+## Tanto efectivo anual
+
+Para el caso particular donde $h=1$, se define $i:= I_1 = i_1$, por lo tanto
+
+$$
+\boxed{f(t,0)=(1+i)^{-t}}
+$$
+
+donde:
+
+
+- $i=I_1=i_1$: El tanto efectivo de interés de frecuencia anual o el tanto de interés nominal (anual) de capitalación anual. Esta será el tipo de interés técnico.
+
+
+El caso particular donde $t=1$, se define $v:=f(1,0)=(1+t)^{-1}$, entonces
+
+$$
+\boxed{f(t,0)=v^t}
+$$
+
+Propiedades del factor de actualización ($v^t$)
+
+1. $v^t$ es creciente en $t$
+2. $v^0=1$
+3. $\lim_{t\to \infty} v^t= 0$
+4. Escindibilidad: $v^{t_1+t_2}=v^{t_1}\cdot v^{t_2}$
+
+
+## Tanto instantáneo de interés
+
+Para el caso particular donde $h \to \infty$, en este caso  
+
+\begin{align*}
+f(t,0) & =\lim_{h\to\infty}\left(1+\frac{i_{h}}{h}\right)^{-h\cdot t}\\
+ & =\left[\lim_{h\to\infty}\left(1+\frac{i_{h}}{h}\right)^{h}\right]^{-t}\\
+ & =e^{-\rho\cdot t}
+\end{align*}
+
+donde $\rho$ es el tanto instantaneo de interés, es decir, la tasa nominal anual con capitalization instántanea. La relación con el tanto efectivo anual
+
+\begin{align*}
+\left(1+i\right)^{-t} & =e^{-\rho\cdot t}\\
+1+i & =e^{\rho}\\
+\rho & =\ln\left(1+i\right)
+\end{align*}
+
+## Tantos efectivos equivalentes
+
+Si se tiene dos periodos de capitalización $h_1$ y $h_2$ tal que que tienen el mismo $t$, $C_t$ y $C_0$, es decir
+
+
+\begin{align*}
+C_{t}\cdot\left(1+I_{h_{1}}\right)^{-h_{1}\cdot t} & =C_{t}\cdot\left(1+I_{h_{2}}\right)^{-h_{2}\cdot t}\\
+\left(1+I_{h_{1}}\right)^{-h_{1}} & =\left(1+I_{h_{2}}\right)^{-h_{2}}\\
+I_{h_{1}} & =\left(1+I_{h_{2}}\right)^{\frac{h_{2}}{h_{1}}}-1
+\end{align*}
+
+## Resumen
+
+En resumen se tienen estas igualdades
+
+
+|                            | Forma                                                         |
+|----------------------------|---------------------------------------------------------------|
+| General                    | $C_{0}=f(t,0)\cdot C_{t}$                                     |
+| Tasa efectiva de interés   | $C_{0}=\left(1+I_{h}\right)^{-h\cdot t}\cdot C_{t}$           |
+| Tasa nominal de interés    | $C_{0}=\left(1+\frac{i_{h}}{h}\right)^{-h\cdot t}\cdot C_{t}$ |
+| Tasa efectiva anual        | $C_{0}=\left(1+i\right)^{-t}\cdot C_{t}$                            |
+| Factor de actualización    | $C_{0}=v^{-t}\cdot C_{t}$                                     |
+| Capitalización instantánea | $C_{0}=e^{-\rho\cdot t}\cdot C_{t}$                                 |
+
+
+
+
+<div style="border: 2px solid #000; padding: 10px;">
+<h2> Ejemplo 1 </h2>
+    
+Una persona, que cumple 60 años hoy, decide ir al banco a realizar una única 
+aportación a un plan de ahorro con el objetivo de tener acumulado en el momento de la 
+jubilación a los 67 años un capital de 500.000€. El plan de ahorro le proporciona un nominal 
+capitalizable semestralmente del 1% durante todo el plazo de la operación. Se pide:
+
+a. Calcular el importe de la aportación única
+b. Calcular el efectivo anual financieramente equivalente al tanto efectivo semestral pactado
+en el plan de ahorro
+c. Calcular el tanto instantáneo proporcionado por el plan de ahorro.
+d. Interpretar el factor financiero de actualización $f(7,0)$ .
+
+```{r}
+h <- 2
+ih <- 0.01
+Ct <- 500000
+x <- 60
+t <- 67 - x
+```
+
+
+a. Calcular el importe de la aportación única
+
+$$
+C_{0}=\left(1+\frac{i_{h}}{h}\right)^{-h\cdot t}\cdot C_{t}=\left(1+\frac{0.01}{2}\right)^{-2\cdot7}\cdot500,000=466,278.2
+$$
+
+```{r}
+#a
+C0 <- (1+ ih/h)^(-h*t) * Ct; C0
+```
+
+
+b. Calcular el efectivo anual financieramente equivalente al tanto efectivo semestral pactado
+en el plan de ahorro
+
+
+$$
+I_{1}=\left(1+\frac{i_{h}}{h}\right)^{h/1}-1=\left(1+\frac{0.01}{2}\right)^{2/1}-1=0.010025
+$$
+
+```{r}
+#b
+Ih <- ih / h
+I1 <- (1+Ih)^(h/1)-1; I1 
+```
+c. Calcular el tanto instantáneo proporcionado por el plan de ahorro.
+
+$$
+\rho=\ln\left(1+I_{1}\right)=\ln\left(1+0.010025\right)=0.009975083
+$$
+
+```{r}
+#c
+rho <- log(1+I1); rho
+```
+
+d. Interpretar el factor financiero de actualización $f(7,0)$ .
+
+
+$$
+f(7,0)=\left(1+I_{1}\right)^{-7}=\left(1+0.010025\right)^{-7}=0.9325565
+$$
+
+```{r}
+#d
+f7.0 <- (1+I1)^(-7); f7.0
+```
+
+
+</div>
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+

@@ -1,0 +1,897 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{tikz}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1in
+\topmargin 1in
+\rightmargin 1in
+\bottommargin 1in
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation 0bp
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Valoración Financiera
+\end_layout
+
+\begin_layout Standard
+Traer a un valor futuro a un valor presente se hace mediante
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boxed{C_{0}=f(t,0)\cdot C_{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boxed{C_{0}=f(t,0)\cdot C_{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $t$
+\end_inset
+
+: Horizonte temporal 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $C_{t}$
+\end_inset
+
+: Es la cantidad en el periodo 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $f(t,0)$
+\end_inset
+
+: Es el factor de descuento de 
+\begin_inset Formula $t$
+\end_inset
+
+ a 
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $C_{0}$
+\end_inset
+
+: Es la cantidad equivalente del monto 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+ en el periodo 
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el caso donde 
+\begin_inset Formula $C_{t}=1$
+\end_inset
+
+ se tiene que su monto equivalente en cero es 
+\begin_inset Formula $f(t,0)$
+\end_inset
+
+, por lo tanto se puede interpretar 
+\begin_inset Formula $f(t,0)$
+\end_inset
+
+ como el equivalente monentario de una unidad monetaria (un euro) del tiempo
+ 
+\begin_inset Formula $t$
+\end_inset
+
+ en el presente.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+En el régimen de interés compuesto el factor de descuento se expresa como
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boxed{f(t,0)=\left(1+I_{h}\right)^{-h\cdot t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+debido a que 
+\begin_inset Formula $I_{h}=\frac{i_{h}}{h}$
+\end_inset
+
+, también
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boxed{f(t,0)=\left(1+\frac{i_{h}}{h}\right)^{-h\cdot t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $h$
+\end_inset
+
+: Frecuencia de capitalización
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $I_{h}$
+\end_inset
+
+: El tanto efectivo de interés de frecuencia de capitalización 
+\begin_inset Formula $h$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $i_{h}$
+\end_inset
+
+: El tanto de interés nominal (anual) de frecuencia de capitalación 
+\begin_inset Formula $h$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Subsection
+Tanto efectivo anual
+\end_layout
+
+\begin_layout Standard
+Para el caso particular donde
+\begin_inset Formula $h=1$
+\end_inset
+
+, se define 
+\begin_inset Formula $i:=I_{1}=i_{1}$
+\end_inset
+
+, por lo tanto
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boxed{f(t,0)=(1+i)^{-t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $i=I_{1}=i_{1}$
+\end_inset
+
+: El tanto efectivo de interés de frecuencia anual o el tanto de interés
+ nominal (anual) de capitalación anual.
+ Esta será el tipo de interés técnico.
+\end_layout
+
+\begin_layout Standard
+El caso particular donde 
+\begin_inset Formula $t=1$
+\end_inset
+
+, se define 
+\begin_inset Formula $v:=f(1,0)=(1+t)^{-1}$
+\end_inset
+
+, entonces
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\boxed{f(t,0)=v^{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Propiedades del factor de actualización (
+\begin_inset Formula $v^{t}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $v^{t}$
+\end_inset
+
+ es creciente en 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $v^{0}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lim_{t\to\infty}v^{t}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Escindibilidad: 
+\begin_inset Formula $v^{t_{1}+t_{2}}=v^{t_{1}}\cdot v^{t_{2}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tanto instantáneo de interés
+\end_layout
+
+\begin_layout Standard
+Para el caso particular donde 
+\begin_inset Formula $h\to\infty$
+\end_inset
+
+, en este caso 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+f(t,0) & =\lim_{h\to\infty}\left(1+\frac{i_{h}}{h}\right)^{-h\cdot t}\\
+ & =\left[\lim_{h\to\infty}\left(1+\frac{i_{h}}{h}\right)^{h}\right]^{-t}\\
+ & =e^{-\rho\cdot t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+donde 
+\begin_inset Formula $\rho$
+\end_inset
+
+ es el tanto instantaneo de interés, es decir, la tasa nominal anual con
+ capitalization instántanea.
+ La relación con el tanto efectivo anual
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\left(1+i\right)^{-t} & =e^{-\rho\cdot t}\\
+1+i & =e^{\rho}\\
+\rho & =\ln\left(1+i\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tantos efectivos equivalentes
+\end_layout
+
+\begin_layout Standard
+Si se tiene dos periodos de capitalización 
+\begin_inset Formula $h_{1}$
+\end_inset
+
+ y 
+\begin_inset Formula $h_{2}$
+\end_inset
+
+ tal que que tienen el mismo 
+\begin_inset Formula $t$
+\end_inset
+
+, 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+ y 
+\begin_inset Formula $C_{0}$
+\end_inset
+
+, es decir
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+C_{t}\cdot\left(1+I_{h_{1}}\right)^{-h_{1}\cdot t} & =C_{t}\cdot\left(1+I_{h_{2}}\right)^{-h_{2}\cdot t}\\
+\left(1+I_{h_{1}}\right)^{-h_{1}} & =\left(1+I_{h_{2}}\right)^{-h_{2}}\\
+I_{h_{1}} & =\left(1+I_{h_{2}}\right)^{\frac{h_{2}}{h_{1}}}-1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Resumen
+\end_layout
+
+\begin_layout Standard
+En resumen se tienen estas igualdades
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Forma
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default" bottomspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+General
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $C_{0}=f(t,0)\cdot C_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default" bottomspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Tasa efectiva de interés
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula $C_{0}=\left(1+I_{h}\right)^{-h\cdot t}\cdot C_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default" bottomspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Tasa nominal de interés
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{0}=\left(1+\frac{i_{h}}{h}\right)^{-h\cdot t}\cdot C_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default" bottomspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Tasa efectiva anual
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{0}=\left(1+i\right)^{-t}\cdot C_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default" bottomspace="default">
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Factor de actualización
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{0}=v^{-t}\cdot C_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="default" bottomspace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+Capitalización instantánea
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $C_{0}=e^{-\rho\cdot t}\cdot C_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ejemplo
+\end_layout
+
+\begin_layout Standard
+Una persona, que cumple 60 años hoy, decide ir al banco a realizar una única
+ aportación a un plan de ahorro con el objetivo de tener acumulado en el
+ momento de la jubilación a los 67 años un capital de 500.000€.
+ El plan de ahorro le proporciona un nominal capitalizable semestralmente
+ del 1% durante todo el plazo de la operación.
+ Se pide:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+a)
+\end_layout
+
+\end_inset
+
+Calcular el importe de la aportación única
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+b)
+\end_layout
+
+\end_inset
+
+Calcular el efectivo anual financieramente equivalente al tanto efectivo
+ semestral pactado en el plan de ahorro
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+c)
+\end_layout
+
+\end_inset
+
+Calcular el tanto instantáneo proporcionado por el plan de ahorro.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+d)
+\end_layout
+
+\end_inset
+
+Interpretar el factor financiero de actualización 
+\begin_inset Formula $f(7,0)$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+Respuesta:
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+a.
+ Calcular el importe de la aportación única
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{0}=\left(1+\frac{i_{h}}{h}\right)^{-h\cdot t}\cdot C_{t}=\left(1+\frac{0.01}{2}\right)^{-2\cdot7}\cdot500,000=466,278.2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+b.
+ Calcular el efectivo anual financieramente equivalente al tanto efectivo
+ semestral pactado en el plan de ahorro
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+I_{1}=\left(1+\frac{i_{h}}{h}\right)^{h/1}-1=\left(1+\frac{0.01}{2}\right)^{2/1}-1=0.010025
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+c.
+ Calcular el tanto instantáneo proporcionado por el plan de ahorro.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\rho=\ln\left(1+I_{1}\right)=\ln\left(1+0.010025\right)=0.009975083
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+d.
+ Interpretar el factor financiero de actualización 
+\begin_inset Formula $f(7,0)$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+f(7,0)=\left(1+I_{1}\right)^{-7}=\left(1+0.010025\right)^{-7}=0.9325565
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
