@@ -98,19 +98,23 @@ Propiedades del factor de actualización ($v^t$)
 
 Para el caso particular donde $h \to \infty$, en este caso  
 
+$$
 \begin{align*}
 f(t,0) & =\lim_{h\to\infty}\left(1+\frac{i_{h}}{h}\right)^{-h\cdot t}\\
  & =\left[\lim_{h\to\infty}\left(1+\frac{i_{h}}{h}\right)^{h}\right]^{-t}\\
  & =e^{-\rho\cdot t}
 \end{align*}
+$$
 
 donde $\rho$ es el tanto instantaneo de interés, es decir, la tasa nominal anual con capitalization instántanea. La relación con el tanto efectivo anual
 
+$$
 \begin{align*}
 \left(1+i\right)^{-t} & =e^{-\rho\cdot t}\\
 1+i & =e^{\rho}\\
 \rho & =\ln\left(1+i\right)
 \end{align*}
+$$
 
 ## Tantos efectivos equivalentes
 
