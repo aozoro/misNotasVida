@@ -7,6 +7,7 @@ output:
     css: estilos.css
     toc: true
     number_sections: true
+    keep_md: true
     toc_depth: 5
     toc_float:
       collapsed: true
@@ -22,10 +23,6 @@ output:
     toc_depth: '5'
     highlight: tango
 ---
-
-
-
-
 
 
 # Valoración financiera 
