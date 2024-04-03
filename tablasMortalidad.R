@@ -3,7 +3,7 @@ rm(list=ls())
 
 ### Tablas de Mortalidad
 
-
+print("Elaborado por André de la Sota")
 
 .tabla.PER2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPER2020.csv")
 .tabla.PASEM2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPASEM2020.csv")
@@ -98,9 +98,9 @@ aprox.balducci <- function(.lx, .lx.1, t) {
       aprox.fun(col[floor(x) + 1], col[ceiling(x) + 1], x - floor(x))
     })
   })
-  salida <- data.frame(resultados, row.names = x.h)
-  names(salida) <- paste0(names(salida), ".h")
-  
+  #salida <- data.frame(resultados, row.names = x.h)
+  #names(salida) <- paste0(names(salida), ".h")
+  salida <- resultados$lx
   return(salida)
 }
 
