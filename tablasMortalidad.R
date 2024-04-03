@@ -3,7 +3,10 @@ rm(list=ls())
 
 ### Tablas de Mortalidad
 
-print("Elaborado por André de la Sota")
+print("Funciones basicas:")
+print("cohorte.PER2020.h(anyo = 2012, h = 1)")
+print("cohorte.PASEM2020.h(h = 1)")
+
 
 .tabla.PER2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPER2020.csv")
 .tabla.PASEM2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPASEM2020.csv")
