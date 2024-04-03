@@ -101,7 +101,7 @@ cohorte.PER2020.h <- function(anyo = 2012, h = 1, tipo = "unif", lx0 = 10^6) {
   return(.cohorte.h(tabla, h, tipo))
 }
 
-cohorte.PASEM2020.h <- function(anyo = 2012, h = 1, tipo = "unif", lx0 = 10^6) {
+cohorte.PASEM2020.h <- function(h = 1, tipo = "unif", lx0 = 10^6) {
   tabla <- cohorte.PASEM2020(lx0 = lx0)
   return(.cohorte.h(tabla, h, tipo))
 }
