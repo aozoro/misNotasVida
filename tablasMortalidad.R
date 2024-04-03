@@ -3,13 +3,21 @@ rm(list=ls())
 
 ### Tablas de Mortalidad
 
+
+
+.tabla.PER2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPER2020.csv")
+.tabla.PASEM2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPASEM2020.csv")
+
+
 # Definición de las funciones para leer las tablas de mortalidad
 tabla.PER2020 <- function() {
-  read.csv("tablas/PrimerPER2020.csv")
+  #read.csv("tablas/PrimerPER2020.csv")
+  .tabla.PER2020 
 }
 
 tabla.PASEM2020 <- function() {
-  read.csv("tablas/PrimerPASEM2020.csv")
+  #read.csv("tablas/PrimerPASEM2020.csv")
+  .tabla.PASEM2020
 }
 
 # Funciones para calcular las tablas de mortalidad por sexo y el ajuste generacional
