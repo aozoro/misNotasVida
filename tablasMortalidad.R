@@ -7,19 +7,16 @@ print("Funciones basicas:")
 print("cohorte.PER2020.h(anyo = 2012, h = 1)")
 print("cohorte.PASEM2020.h(h = 1)")
 
-
 .tabla.PER2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPER2020.csv")
 .tabla.PASEM2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPASEM2020.csv")
 
 
 # Definición de las funciones para leer las tablas de mortalidad
 tabla.PER2020 <- function() {
-  #read.csv("tablas/PrimerPER2020.csv")
   .tabla.PER2020 
 }
 
 tabla.PASEM2020 <- function() {
-  #read.csv("tablas/PrimerPASEM2020.csv")
   .tabla.PASEM2020
 }
 
@@ -116,3 +113,57 @@ cohorte.PASEM2020.h <- function(h = 1, tipo = "unif", lx0 = 10^6) {
   tabla <- cohorte.PASEM2020(lx0 = lx0)
   return(.cohorte.h(tabla, h, tipo))
 }
+
+.u <- function(u0, t, m, h,tipo=0, h.prim=h, u1=0){
+  #tipo 0: constante, 1: aritmetica , 2: geometrica
+  k = h/h.prim
+  if (tipo==0) {
+    u <- u0 + 0*(t-m*h)
+  }  
+  
+  if (tipo==1) {
+    u <- u0 + u1*floor((t-m*h)/k)
+  }
+  
+  if (tipo==2) {
+    u <- u0 * (1+u1)^floor((t-m*h)/k)
+  }
+  return(u)
+}
+
+.renta <- function(m,n,x,any,h,u,venc,I1){
+  lx.h <- cohorte.PER2020.h(anyo = any,h = h)
+  t <- (m*h):((m+n)*h-1)
+  v <- (1+I1)^(-(t+venc)/h)
+  p <- lx.h[x*h+venc+t+1]/lx.h[x*h+1]
+  
+  return(sum(u*v*p))
+}
+
+renta.constante<- function(m,n,x,any.contrato,h,u0,venc,I1,h.prim=h, vitalicio=FALSE){
+  omega <- 120
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=0, h.prim=h.prim)
+  
+  .renta(m=m,n=n,x=x,any=any.contrato-x,h=h,u=u,venc=venc,I1=I1)
+}
+
+renta.aritmetica <- function(m,n,x,any.contrato,h,u0,a,venc,I1,h.prim=h, vitalicio=FALSE){
+  omega <- 120
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=1, h.prim=h.prim,u1 = a)
+  
+  .renta(m=m,n=n,x=x,any=any.contrato-x,h=h,u=u,venc=venc,I1=I1)
+}
+
+renta.geometrica <- function(m,n,x,any.contrato,h,u0,g,venc,I1,h.prim=h, vitalicio=FALSE){
+  omega <- 120
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=2, h.prim=h.prim,u1 = g)
+  
+  .renta(m=m,n=n,x=x,any=any.contrato-x,h=h,u=u,venc=venc,I1=I1)
+}
+
