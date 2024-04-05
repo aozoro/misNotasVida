@@ -1,4 +1,4 @@
-rm(list=ls())
+#rm(list=ls())
 
 
 ### Tablas de Mortalidad
@@ -167,3 +167,140 @@ renta.geometrica <- function(m,n,x,any.contrato,h,u0,g,venc,I1,h.prim=h, vitalic
   .renta(m=m,n=n,x=x,any=any.contrato-x,h=h,u=u,venc=venc,I1=I1)
 }
 
+
+.seguro <- function(m,n,x,h,u,venc,I1){
+  lx.h <- cohorte.PASEM2020.h(h = h)
+  t <- (m*h):((m+n)*h-1)
+  v <- (1+I1)^(-(t+venc)/h)
+  q <- (lx.h[x*h+t+1]-lx.h[x*h+t+2])/ lx.h[x*h+1]
+  return(sum(u*v*q))
+}
+
+
+seguro.constante<- function(m,n,x,h,u0,I1,h.prim=h, vitalicio=FALSE){
+  venc <- 1 
+  omega <- 109
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=0, h.prim=h.prim)
+  
+  .seguro(m=m,n=n,x=x,h=h,u=u,venc=venc,I1=I1)
+}
+
+seguro.aritmetica <- function(m,n,x,h,u0,a,I1,h.prim=h, vitalicio=FALSE){
+  venc <- 1
+  omega <- 109
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=1, h.prim=h.prim,u1 = a)
+  
+  .seguro(m=m,n=n,x=x,h=h,u=u,venc=venc,I1=I1)
+}
+
+seguro.geometrica <- function(m,n,x,h,u0,g,I1,h.prim=h, vitalicio=FALSE){
+  venc <- 1
+  omega <- 120
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=2, h.prim=h.prim,u1 = g)
+  
+  .seguro(m=m,n=n,x=x,h=h,u=u,venc=venc,I1=I1)
+}
+
+
+seguro.constante.cont <- function(m,n,x,h,u0,I1,h.prim=h, vitalicio=FALSE){
+  if (vitalicio) {n <- omega -  x - m}
+  ((1+I1)^(1/h)-1)*h/log(1+I1)*seguro.constante(m,n,x,h,u0,I1,h.prim=h, vitalicio=FALSE)
+}
+seguro.aritmetica.cont <- function(m,n,x,h,u0,a,I1,h.prim=h, vitalicio=FALSE){
+  if (vitalicio) {n <- omega -  x - m}
+  ((1+I1)^(1/h)-1)*h/log(1+I1)*seguro.aritmetica(m,n,x,h,u0,a,I1,h.prim=h, vitalicio=FALSE)
+}
+seguro.geometrica.cont <- function(m,n,x,h,u0,g,I1,h.prim=h, vitalicio=FALSE){
+  if (vitalicio) {n <- omega -  x - m}
+  ((1+I1)^(1/h)-1)*h/log(1+I1)*seguro.geometrica(m,n,x,h,u0,g,I1,h.prim=h, vitalicio=FALSE)
+}
+
+
+
+.seguro.med <- function(m,n,x,h,u,venc,I1){
+  lx.h <- cohorte.PASEM2020.h(h = h)
+  t <- (m*h):((m+n)*h-1)
+  v <- (1+I1)^(-(t+0.5)/h)
+  q <- (lx.h[x*h+t+1]-lx.h[x*h+t+2])/ lx.h[x*h+1]
+  return(sum(u*v*q))
+}
+
+
+seguro.constante.med<- function(m,n,x,h,u0,I1,h.prim=h, vitalicio=FALSE){
+  venc <- 1 
+  omega <- 109
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=0, h.prim=h.prim)
+  
+  .seguro.med(m=m,n=n,x=x,h=h,u=u,venc=venc,I1=I1)
+}
+
+seguro.aritmetica.med <- function(m,n,x,h,u0,a,I1,h.prim=h, vitalicio=FALSE){
+  venc <- 1
+  omega <- 109
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=1, h.prim=h.prim,u1 = a)
+  
+  .seguro.med(m=m,n=n,x=x,h=h,u=u,venc=venc,I1=I1)
+}
+
+seguro.geometrica.med <- function(m,n,x,h,u0,g,I1,h.prim=h, vitalicio=FALSE){
+  venc <- 1
+  omega <- 120
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=2, h.prim=h.prim,u1 = g)
+  
+  .seguro.med(m=m,n=n,x=x,h=h,u=u,venc=venc,I1=I1)
+}
+
+
+
+
+
+.renta.varianza <- function(m,n,x,any,h,u,venc,I1){
+  p <- cohorte.PER2020.h(anyo = any,h = h)
+  t <- (m*h):((m+n)*h-1)
+  v <- (1+I1)^(-(t+venc)/h)
+  probabilidades <- (p[x*h+t+venc+1]/p[x*h+1])*(1-p[x*h+t+venc+2]/p[x*h+t+venc+1])
+  #probabilidades[is.na(probabilidades)] <- 0
+  montos <- c(u*v)
+  es <- sum(probabilidades*cumsum(montos))
+  var <- sum(probabilidades*cumsum(montos)^2)-es^2
+  return(list("media"=es,"varianza"=var))
+}
+
+renta.constante.varianza<- function(m,n,x,any.contrato,h,u0,venc,I1,h.prim=h, vitalicio=FALSE){
+  omega <- 119
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=0, h.prim=h.prim)
+  
+  .renta.varianza(m=m,n=n,x=x,any=any.contrato-x,h=h,u=u,venc=venc,I1=I1)
+}
+
+renta.aritmetica.varianza <- function(m,n,x,any.contrato,h,u0,a,venc,I1,h.prim=h, vitalicio=FALSE){
+  omega <- 119
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=1, h.prim=h.prim,u1 = a)
+  
+  .renta.varianza(m=m,n=n,x=x,any=any.contrato-x,h=h,u=u,venc=venc,I1=I1)
+}
+
+renta.geometrica.varianza <- function(m,n,x,any.contrato,h,u0,g,venc,I1,h.prim=h, vitalicio=FALSE){
+  omega <- 119
+  if (vitalicio) {n <- omega -  x - m}
+  
+  u <- .u(u0=u0, t=(m*h):((m+n)*h-1), m=m, h=h,tipo=2, h.prim=h.prim,u1 = g)
+  
+  return(.renta.varianza(m=m,n=n,x=x,any=any.contrato-x,h=h,u=u,venc=venc,I1=I1))
+}
