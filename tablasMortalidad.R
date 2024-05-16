@@ -361,6 +361,3 @@ esquemaTemporal <- function(x, n, venc, u0, m, h, tipo, h.prim, u1) {
       plot.title = element_text(hjust = 0.5)
     )
 }
-
-
-
