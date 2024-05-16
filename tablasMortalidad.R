@@ -349,7 +349,7 @@ esquemaTemporal <- function(x, n, venc, u0, m, h, tipo, h.prim, u1) {
     scale_y_continuous(limits = c(-2, 4)) +
     scale_x_continuous(limits = c(min(df$x), 36.5)) +
     theme_minimal() +
-    labs(title = "Esquema Temporal", x = NULL, y = NULL) +
+    labs(title = NULL, x = NULL, y = NULL) +
     theme(
       axis.text.x = element_blank(),
       axis.text.y = element_blank(),
