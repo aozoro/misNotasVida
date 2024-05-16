@@ -7,9 +7,19 @@ print("Funciones basicas:")
 print("cohorte.PER2020.h(anyo = 2012, h = 1)")
 print("cohorte.PASEM2020.h(h = 1)")
 
-.tabla.PER2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPER2020.csv")
-.tabla.PASEM2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPASEM2020.csv")
+# Comprobar y cargar PrimerPER2020.csv
+if (file.exists("tablas/PrimerPER2020.csv")) {
+  .tabla.PER2020 <- read.csv("tablas/PrimerPER2020.csv")
+} else {
+  .tabla.PER2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPER2020.csv")
+}
 
+# Comprobar y cargar PrimerPASEM2020.csv
+if (file.exists("tablas/PrimerPASEM2020.csv")) {
+  .tabla.PASEM2020 <- read.csv("tablas/PrimerPASEM2020.csv")
+} else {
+  .tabla.PASEM2020 <- read.csv("https://raw.githubusercontent.com/aozoro/misNotasVida/main/tablas/PrimerPASEM2020.csv")
+}
 
 # Definición de las funciones para leer las tablas de mortalidad
 tabla.PER2020 <- function() {
