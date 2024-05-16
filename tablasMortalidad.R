@@ -343,7 +343,7 @@ esquemaTemporal <- function(x, n, venc, u0, m, h, tipo, h.prim, u1) {
   u <- round(u[u.idx + 1], 0)
   u[!is.na(u)] <- paste0("u(", u.idx[!is.na(u)], ") = ", u[!is.na(u)])
   
-  ggplot(df, aes(x = x)) + 
+  p <- ggplot(df, aes(x = x)) + 
     annotate("segment", x = min(df$x), xend = max(df$x), y = 0, yend = 0, color = "black") +
     annotate("text", x = df$x, y = 0, label = df$tiempo, vjust = 1.8) +
     annotate("text", x = 35.6, y = 0, label = h.texto(h), vjust = 2.3, size = 2.8) +
@@ -370,4 +370,5 @@ esquemaTemporal <- function(x, n, venc, u0, m, h, tipo, h.prim, u1) {
       panel.grid = element_blank(),
       plot.title = element_text(hjust = 0.5)
     )
+  return(p)
 }
