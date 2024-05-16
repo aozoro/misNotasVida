@@ -126,7 +126,7 @@ cohorte.PASEM2020.h <- function(h = 1, tipo = "unif", lx0 = 10^6) {
   }
   
   if (tipo==2) {
-    u <- u0 * (1+u1)^floor((t-m*h)/k)
+    u <- u0 * u1^floor((t-m*h)/k)
   }
   return(u)
 }
@@ -262,10 +262,6 @@ seguro.geometrica.med <- function(m,n,x,h,u0,g,I1,h.prim=h, vitalicio=FALSE){
   .seguro.med(m=m,n=n,x=x,h=h,u=u,venc=venc,I1=I1)
 }
 
-
-
-
-
 .renta.varianza <- function(m,n,x,any,h,u,venc,I1){
   p <- cohorte.PER2020.h(anyo = any,h = h)
   t <- (m*h):((m+n)*h-1)
@@ -304,3 +300,67 @@ renta.geometrica.varianza <- function(m,n,x,any.contrato,h,u0,g,venc,I1,h.prim=h
   
   return(.renta.varianza(m=m,n=n,x=x,any=any.contrato-x,h=h,u=u,venc=venc,I1=I1))
 }
+
+h.texto <- function(h){
+  H <- c(1,2,3,4,6,12)
+  per <- c("años","semestres","cuatrimestres",
+           "trimestres","semestres","meses")
+  return(per[H==h])
+}
+
+# Definir la función con los argumentos especificados
+esquemaTemporal <- function(x, n, venc, u0, m, h, tipo, h.prim, u1) {
+  # Calcular el tiempo y los índices
+  t <- (m * h):((m + n) * h - 1)
+  
+  if (m == 0) {
+    cero <- NULL
+  } else {
+    cero <- 0
+  }
+  
+  df <- data.frame(
+    x = c(cero, 7.5, 12.5, 17.5, 27.5, 32.5),
+    tiempo = c(cero, m * h, m * h + 1, m * h + 2, (m + n) * h - 1, (m + n) * h)
+  )
+  
+  df$edad <- df$tiempo + x * h
+  
+  u.idx <- df$tiempo - m * h - venc
+  u.idx[u.idx < 0 | u.idx == n * h] <- NA
+  
+  u <- .u(u0 = u0, t = t, m = m, h = h, tipo = tipo, h.prim = h.prim, u1 = u1)
+  u <- round(u[u.idx + 1], 0)
+  u[!is.na(u)] <- paste0("u(", u.idx[!is.na(u)], ") = ", u[!is.na(u)])
+  
+  ggplot(df, aes(x = x)) + 
+    annotate("segment", x = min(df$x), xend = max(df$x), y = 0, yend = 0, color = "black") +
+    annotate("text", x = df$x, y = 0, label = df$tiempo, vjust = 1.8) +
+    annotate("text", x = 35.6, y = 0, label = h.texto(h), vjust = 2.3, size = 2.8) +
+    annotate("text", x = df$x, y = 0, label = df$edad, vjust = 3.8) +
+    annotate("text", x = 35.6, y = 0, label = "edad en", vjust = 5.8, size = 2) +
+    annotate("text", x = 35.6, y = 0, label = h.texto(h), vjust = 6.8, size = 2) +
+    annotate("text", x = df$x[!is.na(u)], y = 0, label = u[!is.na(u)], hjust = -0.2, angle = 90) +
+    annotate("text", x = 35.6, y = 0, label = "euros", vjust = -1.8, size = 2.8) +
+    annotate("text", x = 22.5, y = 0, label = ". . .", vjust = 1.8) +
+    annotate("text", x = 22.5, y = 0, label = ". . .", vjust = 3.8) +
+    annotate("text", x = 22.5, y = 0, label = ". . .", vjust = -2.5) +
+    geom_point(aes(y = 0), color = "black", size = 2) +
+    scale_y_continuous(limits = c(-2, 4)) +
+    scale_x_continuous(limits = c(min(df$x), 36.5)) +
+    theme_minimal() +
+    labs(title = "Esquema Temporal", x = NULL, y = NULL) +
+    theme(
+      axis.text.x = element_blank(),
+      axis.text.y = element_blank(),
+      axis.ticks.x = element_blank(),
+      axis.ticks.y = element_blank(),
+      axis.title.x = element_blank(),
+      axis.title.y = element_blank(),
+      panel.grid = element_blank(),
+      plot.title = element_text(hjust = 0.5)
+    )
+}
+
+
+
