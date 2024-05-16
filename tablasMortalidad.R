@@ -339,7 +339,7 @@ esquemaTemporal <- function(x, n, venc, u0, m, h, tipo, h.prim, u1) {
     annotate("text", x = 35.6, y = 0, label = h.texto(h), vjust = 2.3, size = 2.8) +
     annotate("text", x = df$x, y = 0, label = df$edad, vjust = 3.8) +
     annotate("text", x = 35.6, y = 0, label = "edad en", vjust = 5.8, size = 2) +
-    annotate("text", x = 35.6, y = 0, label = h.texto(h), vjust = 6.8, size = 2) +
+    annotate("text", x = 35.6, y = 0, label = h.texto(h), vjust = 7, size = 2) +
     annotate("text", x = df$x[!is.na(u)], y = 0, label = u[!is.na(u)], hjust = -0.2, angle = 90) +
     annotate("text", x = 35.6, y = 0, label = "euros", vjust = -1.8, size = 2.8) +
     annotate("text", x = 22.5, y = 0, label = ". . .", vjust = 1.8) +
